@@ -58,9 +58,11 @@ public class BinarySearchTest {
      * Test of search method, of class BinarySearch.
      */
     @Test
-    public void testSearch() {
-        
+    public void testBinarySearchSequenceWithValidSize() {
         assert seq.length > 0;
+    }
+    @Test
+    public void testBinarySearchSequenceAscendingNoDuplicates(){
         if (seq.length > 1){
             for (int i = 1; i < seq.length; i++){
                 if (seq[i] <= seq[i-1]){
@@ -70,11 +72,15 @@ public class BinarySearchTest {
             }
         }    
         assertEquals(asc, true);
-        
+    }
+    
+    @Test
+    public void BinarySearchFoundElement(){
         if (searchResult.isFound()== true && seq[pos-1] == key ){
             elementFound = true;
         }
         assertEquals(elementFound, true);
     }
     
+
 }
