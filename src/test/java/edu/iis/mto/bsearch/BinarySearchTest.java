@@ -71,7 +71,7 @@ public class BinarySearchTest {
                 }
             }
         }    
-        assertEquals(asc, true);
+        assertEquals(true, asc);
     }
     
     @Test
@@ -79,8 +79,7 @@ public class BinarySearchTest {
         if (searchResult.isFound()== true && seq[pos-1] == key ){
             elementFound = true;
         }
-        assertEquals(elementFound, true);
+        assertEquals(true, elementFound);
     }
     
-
 }
