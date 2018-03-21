@@ -5,6 +5,7 @@
  */
 package edu.iis.mto.bsearch;
 
+import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -71,7 +72,7 @@ public class BinarySearchTest {
                 }
             }
         }    
-        assertEquals(true, asc);
+        assertThat(asc, is(true));
     }
     
     @Test
@@ -79,7 +80,7 @@ public class BinarySearchTest {
         if (searchResult.isFound()== true && seq[pos-1] == key ){
             elementFound = true;
         }
-        assertEquals(true, elementFound);
+        assertThat(elementFound, is(true));
     }
     
 }
