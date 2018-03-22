@@ -51,7 +51,7 @@ public class BinarySearchTest {
      * Test of search method, of class BinarySearch.
      */       
     @Test
-    public void SearchedElementFoundInSingleElementSequence(){
+    public void TestSearchedElementFoundInSingleElementSequence(){
         seq = new int[1];
         seq[0] = 2;
         key = 2;
@@ -64,7 +64,7 @@ public class BinarySearchTest {
     }
     
     @Test
-    public void SearchedElementNotFoundInSingleElementSequence(){
+    public void TestSearchedElementNotFoundInSingleElementSequence(){
         seq = new int[1];
         seq[0] = 2;
         key = 4;
@@ -77,7 +77,7 @@ public class BinarySearchTest {
     }
     
     @Test
-    public void SearchedElementIsFirstInSequence(){
+    public void TestSearchedElementIsFirstInSequence(){
         seq = new int[3];
         seq[0] = 2;
         seq[1] = 3;
@@ -92,7 +92,7 @@ public class BinarySearchTest {
     }
     
     @Test
-    public void SearchedElementIsLastInSequence(){
+    public void TestSearchedElementIsLastInSequence(){
         seq = new int[3];
         seq[0] = 2;
         seq[1] = 3;
@@ -107,7 +107,7 @@ public class BinarySearchTest {
     }
     
     @Test
-    public void SearchedElementIsMiddleElementInSequence(){
+    public void TestSearchedElementIsMiddleElementInSequence(){
         seq = new int[3];
         seq[0] = 2;
         seq[1] = 3;
@@ -122,7 +122,7 @@ public class BinarySearchTest {
     }
     
     @Test 
-    public void SearchedElementIsNotInSequence(){
+    public void TestSearchedElementIsNotInSequence(){
         seq = new int[3];
         seq[0] = 2;
         seq[1] = 3;
@@ -134,5 +134,15 @@ public class BinarySearchTest {
             elementFound = true;
         }
         assertThat(elementFound, is(true));
+    }
+    
+    @Test 
+    public void TestSequenceHasZeroLength(){
+        seq = new int[0];
+        key = 19;
+        try {
+            searchResult = BinarySearch.search(key, seq);
+            fail();
+        } catch (IllegalArgumentException e) {}
     }
 }
