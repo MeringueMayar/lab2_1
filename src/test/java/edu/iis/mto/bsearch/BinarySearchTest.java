@@ -39,16 +39,8 @@ public class BinarySearchTest {
     
     @Before
     public void setUp() {
-        key = 6;
-        seq = new int[4];
-        seq[0] = 6;
-        seq[1] = 7;
-        seq[2] = 9;
-        seq[3] = 22;
-        searchResult = BinarySearch.search(key, seq);
         asc = true;
         elementFound = false;
-        pos = searchResult.getPosition();
     }
     
     @After
@@ -57,30 +49,90 @@ public class BinarySearchTest {
 
     /**
      * Test of search method, of class BinarySearch.
-     */
+     */       
     @Test
-    public void testBinarySearchSequenceWithValidSize() {
-        assert seq.length > 0;
-    }
-    @Test
-    public void testBinarySearchSequenceAscendingNoDuplicates(){
-        if (seq.length > 1){
-            for (int i = 1; i < seq.length; i++){
-                if (seq[i] <= seq[i-1]){
-                    asc = false;
-                    break;
-                }
-            }
-        }    
-        assertThat(asc, is(true));
-    }
-    
-    @Test
-    public void BinarySearchFoundElement(){
+    public void SearchedElementFoundInSingleElementSequence(){
+        seq = new int[1];
+        seq[0] = 2;
+        key = 2;
+        searchResult = BinarySearch.search(key, seq);
+        pos = searchResult.getPosition();
         if (searchResult.isFound()== true && seq[pos-1] == key ){
             elementFound = true;
         }
         assertThat(elementFound, is(true));
     }
     
+    @Test
+    public void SearchedElementNotFoundInSingleElementSequence(){
+        seq = new int[1];
+        seq[0] = 2;
+        key = 4;
+        searchResult = BinarySearch.search(key, seq);
+        pos = searchResult.getPosition();
+        if (searchResult.isFound()== true && seq[pos-1] == key ){
+            elementFound = true;
+        }
+        assertThat(elementFound, is(true));
+    }
+    
+    @Test
+    public void SearchedElementIsFirstInSequence(){
+        seq = new int[3];
+        seq[0] = 2;
+        seq[1] = 3;
+        seq[2] = 7;
+        key = 2;
+        searchResult = BinarySearch.search(key, seq);
+        pos = searchResult.getPosition();
+        if (searchResult.isFound()== true && seq[pos-1] == key ){
+            elementFound = true;
+        }
+        assertThat(elementFound, is(true));
+    }
+    
+    @Test
+    public void SearchedElementIsLastInSequence(){
+        seq = new int[3];
+        seq[0] = 2;
+        seq[1] = 3;
+        seq[2] = 7;
+        key = 7;
+        searchResult = BinarySearch.search(key, seq);
+        pos = searchResult.getPosition();
+        if (searchResult.isFound()== true && seq[pos-1] == key ){
+            elementFound = true;
+        }
+        assertThat(elementFound, is(true));
+    }
+    
+    @Test
+    public void SearchedElementIsMiddleElementInSequence(){
+        seq = new int[3];
+        seq[0] = 2;
+        seq[1] = 3;
+        seq[2] = 7;
+        key = 3;
+        searchResult = BinarySearch.search(key, seq);
+        pos = searchResult.getPosition();
+        if (searchResult.isFound()== true && seq[pos-1] == key ){
+            elementFound = true;
+        }
+        assertThat(elementFound, is(true));
+    }
+    
+    @Test 
+    public void SearchedElementIsNotInSequence(){
+        seq = new int[3];
+        seq[0] = 2;
+        seq[1] = 3;
+        seq[2] = 7;
+        key = 19;
+        searchResult = BinarySearch.search(key, seq);
+        pos = searchResult.getPosition();
+        if (searchResult.isFound()== true && seq[pos-1] == key ){
+            elementFound = true;
+        }
+        assertThat(elementFound, is(true));
+    }
 }
